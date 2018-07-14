@@ -6,7 +6,7 @@ var getQuery = require('@teamwork/sharedb-mingo-memory/get-query');
 var mongoUrl = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test';
 
 function create(callback) {
-  var db = ShareDbMongo({mongo: function(shareDbCallback) {
+  var db = new ShareDbMongo({mongo: function(shareDbCallback) {
     mongodb.connect(mongoUrl, { useNewUrlParser: true }, function(err, mongo) {
       if (err) return callback(err);
       mongo.db().dropDatabase(function(err) {
@@ -335,7 +335,7 @@ describe('mongo db', function() {
 describe('mongo db connection', function() {
   describe('via url string', function() {
     beforeEach(function(done) {
-      this.db = ShareDbMongo({mongo: mongoUrl});
+      this.db = new ShareDbMongo({mongo: mongoUrl});
 
       // This will enqueue the callback, testing the 'pendingConnect'
       // logic.
@@ -370,7 +370,7 @@ describe('mongo db connection', function() {
   describe('via url string with mongoPoll and pollDelay option', function() {
     beforeEach(function(done) {
       this.pollDelay = 1000;
-      this.db = ShareDbMongo({mongo: mongoUrl, mongoPoll: mongoUrl, pollDelay: this.pollDelay});
+      this.db = new ShareDbMongo({mongo: mongoUrl, mongoPoll: mongoUrl, pollDelay: this.pollDelay});
       done();
     });
 
