@@ -4,10 +4,10 @@
   "description": "MongoDB database adapter for ShareDB",
   "main": "index.js",
   "dependencies": {
-    "async": "^2.6.1"
+    "async": "^2.6.1",
+    "mongodb": "^3.1.0"
   },
   "peerDependencies": {
-    "mongodb": "^3.1.0",
     "@teamwork/sharedb": "^2.0.1"
   },
   "devDependencies": {
