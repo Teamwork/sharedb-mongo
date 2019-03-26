@@ -7,6 +7,7 @@ module.exports = ShareDbMongo;
 function ShareDbMongo(mongo, options) {
   // use without new
   if (!(this instanceof ShareDbMongo)) {
+    console.warn('Deprecated: ShareDbMongo is not a function, use new');
     return new ShareDbMongo(mongo, options);
   }
 
